@@ -123,6 +123,11 @@ namespace VUI {
             }
             
             textColor.setHex(floatColor, 255.0);
+			
+			// fix error: non-void function does not return a value
+			// Option 1: Return this
+			// Option 2: Make the function void if you don’t intend to return anything
+			return this;
         };
         
         string GetText(){
@@ -288,7 +293,7 @@ namespace VUI {
         }
         
         void Setup(StyleSheet *ss = nullptr, const string primarySelector = "", const string secondarySelector = ""){
-            textColor.setHex(stoul("0x000000", nullptr, 16), 255.0 );
+			textColor.setHex(std::stoul("0x000000", nullptr, 16), 255.0 );
             
             for (int i = 0; i < 3; i++) {
                 style[i]["background-color"] = "clear";
